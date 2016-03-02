@@ -27,6 +27,12 @@ public class App {
                 + ", employeeId3=" + employeeId3);
         
         listEmployees();
+        
+        updateEmployeeSalary(employeeId1, 4000);
+        
+        deleteEmployee(employeeId2);
+        
+        listEmployees();
     }
     
     public static Integer addEmployee(String fName, String lName, int salary) {
@@ -74,6 +80,43 @@ public class App {
         } finally {
             if (session != null) {
                 session.close();
+            }
+        }
+    }
+    
+    public static void updateEmployeeSalary(Integer employeeId, int salary) {
+        Session session = factory.openSession();
+        try {
+            session.beginTransaction();
+            Employee employee = (Employee) session.get(Employee.class, employeeId);
+            employee.setSalary(salary);
+            session.update(employee);
+            session.getTransaction().commit();
+        } catch (HibernateException ex) {
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+        } finally {
+            if (session != null) {
+                session.clear();
+            }
+        }
+    }
+    
+    public static void deleteEmployee(Integer employeeId) {
+        Session session = factory.openSession();
+        try {
+            session.beginTransaction();
+            Employee employee = (Employee) session.get(Employee.class, employeeId);
+            session.delete(employee);
+            session.getTransaction().commit();
+        } catch (HibernateException ex) {
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+        } finally {
+            if (session != null) {
+                session.clear();
             }
         }
     }
