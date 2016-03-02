@@ -44,6 +44,12 @@
             <artifactId>cglib</artifactId>
             <version>2.2</version>
         </dependency>
+        
+        <dependency>
+            <groupId>antlr</groupId>
+            <artifactId>antlr</artifactId>
+            <version>2.7.7</version>
+        </dependency>
 
         <dependency>
             <groupId>javax.transaction</groupId>
