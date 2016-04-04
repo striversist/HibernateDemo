@@ -15,10 +15,11 @@
 
         <!-- Hibernate framework -->
         <dependency>
-            <groupId>hibernate</groupId>
-            <artifactId>hibernate3</artifactId>
-            <version>3.2.3.GA</version>
-        </dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.1.0.Final</version>
+		</dependency>
+
 
         <!-- Hibernate library dependecy start -->
         <dependency>
